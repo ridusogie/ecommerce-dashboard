@@ -53,15 +53,20 @@ def load_data():
     try:
         # Try to load from the current directory
         df = pd.read_csv('E-commerce Customer Behavior.csv')
+        
+        # Handle missing/blank satisfaction values by normalizing to 'Unknown'
+        df['Satisfaction Level'] = df['Satisfaction Level'].fillna('Unknown')
+        df['Satisfaction Level'] = df['Satisfaction Level'].replace('', 'Unknown')
+        
+        # Log if any Unknown values were found
+        unknown_count = (df['Satisfaction Level'] == 'Unknown').sum()
+        if unknown_count > 0:
+            print(f"ℹ️ Normalized {unknown_count} blank satisfaction values to 'Unknown'")
 
-        # Add data validation 
+        # Add data validation (but keep all records including Unknown satisfaction)
         initial_count = len(df)
 
-        # Filter out rows with missing or invalid satisfaction levels
-        df = df.dropna(subset=['Satisfaction Level'])
-        df = df[df['Satisfaction Level'].isin(['Satisfied', 'Neutral', 'Unsatisfied'])]
-
-        # Additional validation 
+        # Additional validation for other fields
         df = df[
             (df['Age'] > 0) & (df['Age'] < 150) &
             (df['Total Spend'] >= 0) &
@@ -81,7 +86,7 @@ def load_data():
         
         cities = ['New York', 'Los Angeles', 'Chicago', 'Houston', 'Phoenix', 'Philadelphia']
         membership_types = ['Bronze', 'Silver', 'Gold', 'Premium']
-        satisfaction_levels = ['Unsatisfied', 'Neutral', 'Satisfied']
+        satisfaction_levels = ['Unsatisfied', 'Neutral', 'Satisfied', 'Unknown']
         
         df = pd.DataFrame({
             'Customer ID': range(1, 351),
@@ -1002,3 +1007,4 @@ if st.sidebar.button("📥 Download Processed Data"):
         file_name="filtered_customer_data.csv",
         mime="text/csv"
     )
+
