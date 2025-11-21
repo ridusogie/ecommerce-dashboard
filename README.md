@@ -47,7 +47,7 @@ streamlit run app.py
 
 ## Live Demo
 
-https://ecommerce-dashboard-ak6calmpwabg62twth6dvt.streamlit.app/
+https://ecommerce-dashboard-ahhtaewbcmxzxtrusdgmum.streamlit.app/
 
 ## Key Insights
 
@@ -72,5 +72,6 @@ https://ecommerce-dashboard-ak6calmpwabg62twth6dvt.streamlit.app/
 ## License
 
 This project is for educational purposes as part of MBA coursework.
+
 
 
