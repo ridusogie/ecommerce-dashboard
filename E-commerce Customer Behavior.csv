@@ -348,4 +348,5 @@ Customer ID,Gender,Age,City,Membership Type,Total Spend,Items Purchased,Average 
 447,Female,36,Houston,Bronze,470.5,8,3,FALSE,27,Neutral
 448,Female,30,New York,Gold,1190.8,16,4.5,TRUE,28,Satisfied
 449,Male,34,Los Angeles,Silver,780.2,11,4.2,FALSE,21,Neutral
+
 450,Female,43,Chicago,Bronze,515.75,10,3.3,TRUE,49,Unsatisfied
